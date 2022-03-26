@@ -1,0 +1,141 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+body {
+  background-color: #f4f6f6;
+  /* overflow: hidden; */
+}
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+header {
+  flex: .8;
+  border: solid;
+  display: flex;
+  align-items: center;
+}
+.h-cont-btn{
+  display: flex;
+  flex-direction: column;
+  margin-left: 3%;
+}
+.h-cont-btn button{
+  margin: 3%;
+  cursor: pointer;
+  width: max-content;
+}
+
+main {
+  flex: 9;
+  border: 1px solid green;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+.item {
+  border: solid red;
+  margin: 1%;
+  display: flex;
+  flex-direction: column;
+}
+.i-heaed{
+border: solid black;
+flex: .5;
+margin: 2%;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.i-body{
+    margin: 2%;
+    border: solid blue;
+    flex: 9;
+    background-image: url('mon-logo.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.modal{
+    background-color: rgba(0, 0, 0, .2);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+}
+.modal.show-modal{
+  visibility: visible;
+}
+.mod-body{
+    border: solid;
+    display: flex;
+    flex-direction: column;
+}
+.mod-head{
+    flex: 2;
+    background-color: #5D422F;
+    display: flex;
+    justify-content: flex-end;
+}
+.close{
+  cursor: pointer;
+  height: 25px;
+  width: 25px;
+  margin: 2%;
+  color: #fff;
+}
+.form-it{
+    display: flex;
+    flex-direction: column;
+    padding: .2em;
+    width: 90%;
+    margin: auto;
+}
+.mod-main{
+    flex: 9;
+    /* border: 1px solid orange; */
+    background-color: #ffdd;
+}
+textarea{
+  resize: none;
+  border-radius: 10px;
+  border: none;
+}
+textarea:focus{
+  border-radius: 10px;
+}
+.form-it label{
+  cursor: pointer;
+}
+.form-it input{
+  border-radius: 4px;
+  border: none;
+}
+.form-it input[type='time']{
+  background-color:#3498DB;
+}
+.form-it input[type='date']{
+  background-color: #F4D03F;
+}
+.form-it input::shadow{
+  color: red;
+}
+::-webkit-calendar-picker-indicator{
+  background-color: #fff;
+  cursor: pointer;
+}
+.form-it button{
+  background-color: #17A589; 
+  border-radius: 4px;
+  cursor: pointer;
+  border: none;
+  margin: 3% 0 3%;
+  height: 22px;
+}
