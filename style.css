@@ -1,12 +1,15 @@
-*{
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-    text-align: center;
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  text-align: center;
 }
 body {
   background-color: #f4f6f6;
-  /* overflow: hidden; */
+  background-image: url("showcase.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 .container {
   height: 100vh;
@@ -14,17 +17,17 @@ body {
   flex-direction: column;
 }
 header {
-  flex: .8;
+  flex: 0.8;
   border: solid;
   display: flex;
   align-items: center;
 }
-.h-cont-btn{
+.h-cont-btn {
   display: flex;
   flex-direction: column;
   margin-left: 3%;
 }
-.h-cont-btn button{
+.h-cont-btn button {
   margin: 3%;
   cursor: pointer;
   width: max-content;
@@ -37,105 +40,149 @@ main {
   grid-template-columns: repeat(5, 1fr);
 }
 .item {
+  /* background-color: rgba(0, 0, 54, 0.2); */
   border: solid red;
   margin: 1%;
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
 }
-.i-heaed{
-border: solid black;
-flex: .5;
-margin: 2%;
-display: flex;
-align-items: center;
-justify-content: center;
+.i-heaed {
+  border: solid black;
+  flex: 0.5;
+  margin: 2%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.i-body{
-    margin: 2%;
-    border: solid blue;
-    flex: 9;
-    background-image: url('mon-logo.png');
-    background-repeat: no-repeat;
-    background-position: center;
+.i-body {
+  margin: 2%;
+  flex: 9;
+  /* background-image: url('images/mon-logo.png'); */
+  background-image: url("images/logo-no-point200x80.png");
+  background-repeat: no-repeat;
+  background-position: center;
 }
-.modal{
-    background-color: rgba(0, 0, 0, .2);
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    visibility: hidden;
+.modal {
+  background-color: rgba(0, 0, 0, 0.2);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
 }
-.modal.show-modal{
+.modal.show-modal {
   visibility: visible;
 }
-.mod-body{
-    border: solid;
-    display: flex;
-    flex-direction: column;
+.mod-body {
+  border: solid;
+  display: flex;
+  flex-direction: column;
 }
-.mod-head{
-    flex: 2;
-    background-color: #5D422F;
-    display: flex;
-    justify-content: flex-end;
+.mod-head {
+  flex: 2;
+  background-color: #5d422f;
+  display: flex;
+  justify-content: flex-end;
 }
-.close{
+.close {
   cursor: pointer;
   height: 25px;
   width: 25px;
   margin: 2%;
   color: #fff;
 }
-.form-it{
-    display: flex;
-    flex-direction: column;
-    padding: .2em;
-    width: 90%;
-    margin: auto;
+.form-it {
+  display: flex;
+  flex-direction: column;
+  padding: 0.2em;
+  width: 90%;
+  margin: auto;
 }
-.mod-main{
-    flex: 9;
-    /* border: 1px solid orange; */
-    background-color: #ffdd;
+.mod-main {
+  flex: 9;
+  /* border: 1px solid orange; */
+  background-color: #ffdd;
+  font-size: 2rem;
 }
-textarea{
+textarea {
   resize: none;
   border-radius: 10px;
   border: none;
 }
-textarea:focus{
+textarea:focus {
   border-radius: 10px;
 }
-.form-it label{
+.form-it label {
   cursor: pointer;
 }
-.form-it input{
+.form-it input {
   border-radius: 4px;
   border: none;
 }
-.form-it input[type='time']{
-  background-color:#3498DB;
+.form-it input[type="time"] {
+  background-color: #3498db;
 }
-.form-it input[type='date']{
-  background-color: #F4D03F;
+.form-it input[type="date"] {
+  background-color: #f4d03f;
 }
-.form-it input::shadow{
+.form-it input::shadow {
   color: red;
 }
-::-webkit-calendar-picker-indicator{
+::-webkit-calendar-picker-indicator {
   background-color: #fff;
   cursor: pointer;
 }
-.form-it button{
-  background-color: #17A589; 
+.form-it button {
+  background-color: #17a589;
   border-radius: 4px;
   cursor: pointer;
   border: none;
   margin: 3% 0 3%;
   height: 22px;
+}
+.note {
+  width: 100%;
+  /* border: solid; */
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin: 3% auto;
+}
+.full-note {
+  border: solid;
+  margin: 2% auto;
+}
+.move-right {
+  position: absolute;
+  right: 0;
+}
+.i-img {
+  width: 100%;
+  height: 80px;
+}
+.i-img img {
+  height: 100%;
+  width: 100%;
+}
+.edit {
+  font-size: 1.5rem;
+  /* background-color: black; */
+  width: 100%;
+  height: 100%;
+  /* color: #fff; */
+}
+.tenu {
+  border: solid 5px #ccc;
+}
+.disparaitre{
+  display: none;
+}
+.hovered {
+  background: #f4f4f4;
+  border-style: dashed;
 }

@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="images/neige.jpg" type="image">
     <title>TRELLO</title>
 </head>
 
@@ -13,21 +14,32 @@
     <div class="container">
         <header>
             <div class="h-cont-btn">
-                <button id="add-column">ajouter colonne</button> 
-                <button id="add-note">ajouter noter</button> 
+                <button id="add-column">ajouter colonne</button>
+                <button id="add-note">ajouter noter</button>
             </div>
+            <!-- <div class="login">
+                author
+            </div> -->
         </header>
         <main>
-            <div class="item">
+            <!-- <div class="item">
                 <div class="i-heaed">
-                    <span>colone 1</span>
+                    <h3>colone 1</h3>
                 </div>
                 <div class="i-body">
-                    <div>
-                        x
+                    <div class="full-note" draggable="true">
+                        <div class="i-img">
+                            <img src="images/showcase.jpg">
+                        </div>
+                        <div class="note" >
+                            <button class="move-left"> < </button>
+                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing</p>
+                                    <button class="move-right"> > </button>
+                        </div>
+                        <p>de <span id="start-time">12h</span> à <span id="end-time">15h</span></p>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </main>
         <div class="modal">
             <div class="mod-body">
@@ -37,25 +49,25 @@
                 <div class="mod-main">
                     <span>les informationd elanouvelle tache</span>
                     <!-- <form action="" method="post"> -->
-                        <div class="form-it">
-                            <label for="tache">tache</label>
-                            <textarea name="" id="tache" cols="30" rows="10"></textarea>
-                        </div>
-                        <div class="form-it">
-                            <label for="date">date</label>
-                            <input type="date" name="" id="date">
-                        </div>
-                        <div class="form-it">
-                            <label for="timed">date de depart</label>
-                            <input type="time" name="timed" id="timed">
-                        </div>
-                        <div class="form-it">
-                            <label for="timef">date de depart</label>
-                            <input type="time" name="timef" id="timef">
-                        </div>
-                        <div class="form-it">
-                            <button>Ajouter</button>
-                        </div>
+                    <div class="form-it">
+                        <label for="tache">tache</label>
+                        <textarea name="" id="tache" cols="30" rows="10"></textarea>
+                    </div>
+                    <div class="form-it">
+                        <label for="date">date</label>
+                        <input type="date" name="" id="date">
+                    </div>
+                    <div class="form-it">
+                        <label for="timed">date de depart</label>
+                        <input type="time" name="timed" id="timed">
+                    </div>
+                    <div class="form-it">
+                        <label for="timef">date de depart</label>
+                        <input type="time" name="timef" id="timef">
+                    </div>
+                    <div class="form-it">
+                        <button id="add-us">Ajouter</button>
+                    </div>
                     <!-- </form> -->
                 </div>
             </div>
