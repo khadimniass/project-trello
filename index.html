@@ -5,42 +5,88 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="images/neige.jpg" type="image">
     <title>TRELLO</title>
 </head>
 
 <body>
+    <div class="liste-etats">liste</div>
     <div class="container">
         <header>
+
+            <div class="auto-save">
+                <i class="fa-solid fa-arrow-down"></i>
+                <save>auto save</save>
+            </div>
             <div class="h-cont-btn">
                 <button id="add-column">ajouter colonne</button>
                 <button id="add-note">ajouter noter</button>
             </div>
-            <!-- <div class="login">
-                author
-            </div> -->
+            <i class="fa-solid fa-file icon-head-cen"></i>
+            <i class="fa-solid fa-trash icon-head-cen"></i>
         </header>
         <main>
-            <!-- <div class="item">
+             <div class="item">
+                <i class="fa-solid fa-trash-can animate__bounce"></i>
                 <div class="i-heaed">
                     <h3>colone 1</h3>
                 </div>
                 <div class="i-body">
-                    <div class="full-note" draggable="true">
+                   
+
+
+                    <!-- <div class="full-note" draggable="true">
+                        <i class="fa-solid fa-circle-minus"></i>
                         <div class="i-img">
-                            <img src="images/showcase.jpg">
+                            <img src="https://source.unsplash.com/random/150x80">
                         </div>
-                        <div class="note" >
-                            <button class="move-left"> < </button>
-                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing</p>
+                        <div class="note">
+                            <button class="move-left">
+                                < </button>
                                     <button class="move-right"> > </button>
                         </div>
-                        <p>de <span id="start-time">12h</span> à <span id="end-time">15h</span></p>
+                        <div class="info">
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing</p>
+                            <div class="containt-time">
+                                <div class="date-execution">
+                                    <span>15/06/1998</span>
+                                    <small>date</small>
+                                </div>
+                                <div class="hdbut">
+                                    <span>15h:58</span>
+                                    <small>heure de debut</small>
+                                </div>
+                                <div class="hfin">
+                                    <span>18:02</span>
+                                    <small>heure de fin</small>
+                                </div>
+                                <!-- <span id="date">Le 15/O6/1998</span>
+                                <p>de <span id="start-time">12h</span> à <span id="end-time">15h</span></p> -->
+                            </div>
+                        </div>
+                    </div> -->
+
+                    
+
+                </div>
+            </div>
+        </main>
+
+
+        <div class="item containt-corbeille">
+            <div class="i-heaed">
+                <i>restoration</i>
+            </div>
+            <div class="i-body">
+                <div class="full-note" draggable="true">
+                    <div class="note">
+                        <p>Lorem ipsum, dolor sit amet </p>
                     </div>
                 </div>
-            </div> -->
-        </main>
+            </div>
+        </div>
+
         <div class="modal">
             <div class="mod-body">
                 <div class="mod-head">
@@ -74,7 +120,11 @@
 
         </div>
     </div>
-    <script src="script.js"></script>
+    <!-- <script src="https://kit.fontawesome.com/5e19140a3f.js" crossorigin="anonymous"></script> -->
+    <script src="js/kit.fontawesome.js" crossorigin="anonymous"></script>
+    <script src="js/VARIABLES.js"></script>
+    <script src="js/fonction-js.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>
