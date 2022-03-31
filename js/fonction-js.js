@@ -5,7 +5,7 @@ function getBackroundColor() {
 function addNewColumn() {
   const divItem = document.createElement("div");
   divItem.className = "item";
-  divItem.setAttribute("id", `item${cpt}`);
+  divItem.setAttribute("id", `${cpt}`);
   divItem.style.backgroundColor = getBackroundColor();
   const icone = document.createElement("i");
   icone.className = "fa-solid fa-trash-can animate__bounce";
@@ -27,75 +27,123 @@ function addNewColumn() {
       alert("impossible de supprimer la première colonne");
     } else {
       icone.parentNode.remove();
-      if (!isColomnemodify) {
+      // if (!isColomnemodify) {
         renomerItem();
-      }
+      // }
     }
   });
   cpt++;
   // renomerItem();
 }
 function addTach() {
+  const bodyItem = document.querySelector('.i-body')
+
+
+
   const divFullNote = document.createElement("div");
   divFullNote.className = "full-note";
   divFullNote.draggable = "true";
+  const iconeDeleteTach = document.createElement("i");
+  iconeDeleteTach.className = "fa-solid fa-circle-minus";
+  // iconeDeleteTach.innerHTML = "d"
   const divNoteImg = document.createElement("div");
   divNoteImg.className = "i-img";
   /* img note */
-  // const imgNote = document.createElement("img");
-  // imgNote.src = "images/showcase.jpg";
-  // divNoteImg.appendChild(imgNote);
+  const imgNote = document.createElement("img");
+  imgNote.src = "https://source.unsplash.com/random/150x80";
+  divNoteImg.appendChild(imgNote);
   /* img note */
 
-  const bodyItem = document.querySelector(".i-body");
   const divNote = document.createElement("div");
   divNote.className = "note";
   // divNote.draggable = "true"
   const btnLeft = document.createElement("button");
   btnLeft.className = "move-left";
   btnLeft.innerHTML = "<";
-  const p = document.createElement("p");
   const btnRight = document.createElement("button");
   btnRight.className = "move-right";
   btnRight.innerHTML = ">";
-
-  const spanstartime = document.createElement("span");
-  spanstartime.id = "start-time";
-
-  const spanendtime = document.createElement("span");
-  spanendtime.id = "end-time";
-
+  /* note */
+  /* info */
+  const divInfo = document.createElement('div');
+  divInfo.className = "info"
+  const p = document.createElement("p");
   p.innerHTML = textarea.value;
-  spanstartime.innerHTML = startTime.value;
-  spanendtime.innerHTML = endTime.value;
+  const containtTime = document.createElement('div');
+  containtTime.className = "containt-time";
+  const divDateexcec = document.createElement('div');
+  divDateexcec.className="date-execution";
+  const spandate = document.createElement('span');
+  spandate.innerHTML = startTime.value  /* cheikh moustapha */
+  const smalldate = document.createElement('small');
+  smalldate.innerHTML = "date";
+  divDateexcec.appendChild(spandate);
+  divDateexcec.appendChild(smalldate);
+  const divHdebut = document.createElement('div');
+  divHdebut.className = "hdbut";
+  const spanhdb = document.createElement('span');
+  spanhdb.innerHTML = timed.value;
+  const smallHdb = document.createElement('small');
+  smallHdb.innerHTML = "heure debut";
+  divHdebut.appendChild(spanhdb);
+  divHdebut.appendChild(smallHdb);
 
-  // console.log(`heure de depart ${spanstartime.innerHTML}`);
-  // console.log(`heure de fin ${spanendtime.innerHTML}`);
+  const divHfin = document.createElement('div');
+  divHfin.className = " hfin";
+  const spanhfin = document.createElement('span');
+  spanhfin.innerHTML = endTime.value;
+  const smallhfin = document.createElement('small');
+  smallhfin.innerHTML = "heure de fin";
+  divHfin.appendChild(spanhfin);
+  divHfin.appendChild(smallhfin);
 
-  if (
-    p.innerHTML != "" ||
-    spanstartime.innerHTML != null ||
-    spanendtime.innerHTML != null
-  ) {
+  containtTime.appendChild(divDateexcec);
+  containtTime.appendChild(divHdebut);
+  containtTime.appendChild(divHfin);
+  divInfo.appendChild(p);
+  divInfo.appendChild(containtTime);
+
+
+ 
     divNote.appendChild(btnLeft);
-    divNote.appendChild(p);
     divNote.appendChild(btnRight);
+    divFullNote.appendChild(iconeDeleteTach);
     divFullNote.appendChild(divNoteImg);
     divFullNote.appendChild(divNote);
-
-    const ptime = document.createElement("p");
-
-    ptime.innerHTML = `de ${spanstartime.innerHTML} à ${spanendtime.innerHTML}`;
-    divFullNote.appendChild(ptime);
+    divFullNote.appendChild(divInfo);
+    
     bodyItem.appendChild(divFullNote);
-    textarea.value = "";
-    modal.className = "modal";
-  } else {
-    alert("ecris quelques choses");
-  }
+    // textarea.value = "";
+    // modal.className = "modal";
+
+    btnRight.addEventListener('click',(e)=>{
+      const col = e.target.parentElement.parentElement.parentElement.parentElement;
+      const tach = e.target.parentElement.parentElement
+      const idColAct = parseInt(col.id);
+      const colSuiv = document.getElementById(idColAct+1);
+      colSuiv.lastChild.appendChild(tach);
+    })
+    btnLeft.addEventListener('click',e=>{
+      const col = e.target.parentElement.parentElement.parentElement.parentElement;
+      const tach = e.target.parentElement.parentElement
+      const idColAct = parseInt(col.id);
+      const colSuiv = document.getElementById(idColAct-1);
+      colSuiv.lastChild.appendChild(tach);
+    });
+    iconeDeleteTach.addEventListener('click',(e)=>{
+      const deltach = e.target.parentElement
+      // console.log(deltach);
+      elementSupprimer.appendChild(deltach)
+    })
+  
 }
 function renomerItem() {
   document.querySelectorAll(".item").forEach((elts, j) => {
-    elts.querySelector("h3").innerText   = "colone "+(j+1);
+    elts.querySelector("h3").innerText = `colone ${j+1}`;
+    elts.id = j+1;
   });
+}
+
+function remonterElement(elts,nmb) {
+  return elts.parentElement*nmb;
 }

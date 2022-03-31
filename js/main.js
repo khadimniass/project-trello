@@ -30,6 +30,7 @@ let cpt = 1;
 addColumn.addEventListener("click", () => {
   if (main.childElementCount < 5) {
     addNewColumn();
+    renomerItem();
   }
 });
 //drop and drag
@@ -41,7 +42,7 @@ window.addEventListener("click", (e) => {
   if (!item) return;
   const us = e.target.closest(".full-note"); //élément à deplacer
   if (!us) return;
-  console.log(us);
+  // console.log(us);
 
   us.addEventListener("dragstart", () => {
     this.className = "full-note tenu";
@@ -84,6 +85,7 @@ addUs.addEventListener("click", () => {
 corbeille.addEventListener("click", () => {
   containerCorbeil.classList.toggle("show-corbeille");
 });
+//renommer collone
 window.addEventListener("click", (e) => {
   const title = e.target.closest("h3");
   if (!title) return;
@@ -106,3 +108,8 @@ window.addEventListener("click", (e) => {
   });
 
 });
+
+upDown.addEventListener('click', () =>{
+  upDown.classList.toggle('tourner');
+  listerEtat.classList.toggle('show-etat')
+})

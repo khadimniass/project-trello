@@ -11,7 +11,6 @@
 </head>
 
 <body>
-    <div class="liste-etats">liste</div>
     <div class="container">
         <header>
 
@@ -23,20 +22,27 @@
                 <button id="add-column">ajouter colonne</button>
                 <button id="add-note">ajouter noter</button>
             </div>
+
+            <i class="fa-solid fa-angle-up icon-head-cen"></i>
             <i class="fa-solid fa-file icon-head-cen"></i>
+
             <i class="fa-solid fa-trash icon-head-cen"></i>
+
         </header>
+        <div class="liste-etats">
+            <h1>liste des etats</h1>
+        </div>
         <main>
-             <div class="item">
+            <!-- <div class="item">
                 <i class="fa-solid fa-trash-can animate__bounce"></i>
                 <div class="i-heaed">
                     <h3>colone 1</h3>
                 </div>
-                <div class="i-body">
-                   
+                <div class="i-body"> -->
 
 
-                    <!-- <div class="full-note" draggable="true">
+
+            <!-- <div class="full-note" draggable="true">
                         <i class="fa-solid fa-circle-minus"></i>
                         <div class="i-img">
                             <img src="https://source.unsplash.com/random/150x80">
@@ -61,16 +67,14 @@
                                     <span>18:02</span>
                                     <small>heure de fin</small>
                                 </div>
-                                <!-- <span id="date">Le 15/O6/1998</span>
-                                <p>de <span id="start-time">12h</span> à <span id="end-time">15h</span></p> -->
                             </div>
                         </div>
                     </div> -->
 
-                    
 
-                </div>
-            </div>
+
+            <!-- </div>
+            </div> -->
         </main>
 
 
@@ -78,12 +82,8 @@
             <div class="i-heaed">
                 <i>restoration</i>
             </div>
-            <div class="i-body">
-                <div class="full-note" draggable="true">
-                    <div class="note">
-                        <p>Lorem ipsum, dolor sit amet </p>
-                    </div>
-                </div>
+            <div class="i-body element-supprimer">
+                
             </div>
         </div>
 
@@ -108,7 +108,7 @@
                         <input type="time" name="timed" id="timed">
                     </div>
                     <div class="form-it">
-                        <label for="timef">date de depart</label>
+                        <label for="timef">date de fin</label>
                         <input type="time" name="timef" id="timef">
                     </div>
                     <div class="form-it">

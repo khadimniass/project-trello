@@ -12,6 +12,14 @@
     transform: translateX(0);
   }
 }
+@keyframes anime-show-list {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
 body {
   background-color: #f4f6f6;
   overflow: hidden;
@@ -27,11 +35,11 @@ header {
   border: solid;
   display: flex;
   align-items: center;
+  position: relative;
 }
 .h-cont-btn {
   display: flex;
   flex-direction: column;
-  /* margin-left: 3%; */
 }
 .h-cont-btn button {
   margin: 3%;
@@ -67,6 +75,13 @@ main {
   /* height: 90%; */
   overflow-y: auto;
 }
+.item:first-child .full-note .move-left {
+  visibility: hidden;
+}
+.item:last-child .full-note .move-right {
+  visibility: hidden;
+}
+
 .i-heaed {
   border: solid black;
   flex: 0.5;
@@ -174,7 +189,7 @@ textarea:focus {
   margin: 3% auto;
   /* background-color: #fff; */
 }
-.full-note{
+.full-note {
   position: relative;
   border: solid;
   margin: 2% auto;
@@ -184,7 +199,7 @@ textarea:focus {
   position: absolute;
   right: 0;
 }
-.move-left{
+.move-left {
   position: absolute;
   left: 0;
 }
@@ -195,8 +210,8 @@ textarea:focus {
 .i-img img {
   height: 100%;
   width: 100%;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 }
 .edit {
   font-size: 1.5rem;
@@ -235,20 +250,27 @@ textarea:focus {
 }
 .fa-file {
   right: 50%;
+  bottom: 5%;
 }
+.fa-angle-up {
+  right: 50%;
+  top: 5%;
+}
+
 .containt-corbeille {
   position: absolute;
   right: 0;
-  height: 85%;
+  height: 88%;
   bottom: 0;
   overflow-y: auto;
   visibility: hidden;
   z-index: 2;
   background-color: #fff;
   border: none;
-  width: 50vw;
+  width: 30vw;
   border-bottom-left-radius: 10px;
   border-top-left-radius: 10px;
+  margin: 0;
 }
 .show-corbeille {
   animation: anim-corbeil 1s;
@@ -263,15 +285,36 @@ textarea:focus {
   font-size: 1px;
 }
 
-/* include javascript */
+/* includes javascript */
 
 .liste-etats {
+  position: absolute;
+  top: 11.6%;
+  left: 2%;
+  right: 2%;
   height: 80vh;
   border: solid salmon;
-  display: none;
+  overflow-y: scroll;
+  background-color: #fff;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  z-index: 2;
+  box-shadow: 0.5px 4.8px 0px -5px rgba(0, 0, 0, 0.026),
+    0.9px 9.7px 0px -5px rgba(0, 0, 0, 0.038),
+    1.4px 15.1px 0.1px -5px rgba(0, 0, 0, 0.047),
+    2px 21.1px 0.1px -5px rgba(0, 0, 0, 0.055),
+    2.7px 27.9px 0.2px -5px rgba(0, 0, 0, 0.063),
+    3.2px 33.4px 0.3px -5px rgba(0, 0, 0, 0.072),
+    3.6px 37.9px 0.5px -5px rgba(0, 0, 0, 0.084),
+    4px 42px 1px -5px rgba(0, 0, 0, 0.011);
+  visibility: hidden;
+}
+.tourner {
+  transform: rotate(-180deg);
 }
 .liste-etats.show-etat {
-  display: block;
+  visibility: visible;
+  animation: anime-show-list 1s;
 }
 
 .fa-circle-minus {
@@ -299,13 +342,13 @@ textarea:focus {
   margin: 0;
 }
 /* scroll */
-/* ::-webkit-scrollbar{
+::-webkit-scrollbar {
   width: 5px;
 }
-::-webkit-scrollbar-thumb{
-border-radius: 10px;
-background: linear-gradient(transparent, black)
-} */
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: linear-gradient(transparent, black);
+}
 /* scroll */
 
 .containt-time {
@@ -325,9 +368,9 @@ background: linear-gradient(transparent, black)
   border-radius: 5px;
   border-radius: 10px;
   color: #fff;
-  background-color: #3498DB ;
+  background-color: #3498db;
 }
-.containt-time small{
+.containt-time small {
   /* background-color: #edf; */
 }
 .date-execution {
@@ -339,6 +382,10 @@ background: linear-gradient(transparent, black)
 .hfin {
   margin: 1%;
 }
-/* .date-execution ::-webkit-calendar-picker-indicator {
-  background-color: red;
-} */
+.info{
+  visibility: hidden;
+}
+/* .item:hover .fa-trash-can  */
+.full-note:hover .info{
+  visibility: visible;
+}

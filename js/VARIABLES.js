@@ -8,11 +8,18 @@ const main = document.querySelector("main");
 const addUs = document.getElementById("add-us");
 const textarea = document.querySelector("textarea");
 
-const startTime = document.getElementById("timed");
+const startTime = document.getElementById("date");
+const timed = document.getElementById('timed');
 const endTime = document.getElementById("timef");
 const corbeille = document.querySelector('.fa-trash');
 
+const elementSupprimer = document.querySelector('.element-supprimer');
+
+const upDown = document.querySelector('.fa-angle-up');
+
+const listerEtat = document.querySelector('.liste-etats');
 let isColomnemodify = false;
+
 /* fond d'ecrant aleatoire */
 const FondEcrans = [
   "images/Nataalbi-Pigeon-perce.jpg",
