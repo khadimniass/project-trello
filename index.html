@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/keyframes.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.alert.css">
     <link rel="icon" href="images/neige.jpg" type="image">
     <title>TRELLO</title>
 </head>
@@ -76,16 +78,43 @@
             <!-- </div>
             </div> -->
         </main>
+        <!-- begin popup de confirmation -->
+        <div class="container-popup">
+            <div class="body-pop">
+                <!-- <input type="checkbox" id="check"> -->
+                <!-- <label class="show_button" for="check">Click Me</label> -->
+                <div class="background"></div>
+                <div class="alert_box">
+                    <div class="cont-icone-pop">
+                        <div class="icone-poup">
+                            <i class="fas fa-exclamation"></i>
+                        </div>
+                    </div>
+                    <div class="head-popup">Confirm</div>
+                    <p id="message-alerte">tu es vraiment sur de vouloir effacer</p>
+                    <div class="btns">
+                        <label for="check">Yes, Delete!</label>
+                        <label for="check">Cancel</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--en popup de confirmation -->
 
-
-        <div class="item containt-corbeille">
+        <!--begin notification -->
+        <div class="notification">
+            <i class="fa-solid fa-circle-xmark"></i>
+            <span id="message"></span>
+        </div>
+        <!--end notification -->
+        <aside class="item containt-corbeille">
             <div class="i-heaed">
                 <i>restoration</i>
             </div>
             <div class="i-body element-supprimer">
-                
+
             </div>
-        </div>
+        </aside>
 
         <div class="modal">
             <div class="mod-body">

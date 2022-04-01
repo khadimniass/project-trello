@@ -20,6 +20,20 @@ const upDown = document.querySelector('.fa-angle-up');
 const listerEtat = document.querySelector('.liste-etats');
 let isColomnemodify = false;
 
+const bntOui = document.getElementById('oui')
+const bntNon = document.getElementById('non')
+const popUpAlert = document.querySelector('.pop-up-alert');
+
+const notification = document.querySelector('.notification')
+const closeNotifier = document.querySelector('.fa-circle-xmark');
+
+const messageAlerte = document.getElementById("message-alerte");
+
+let placemessage = document.getElementById('message'); 
+
+const placeMessageAlert = document.getElementById('message-alerte');
+
+const containerPopup = document.querySelector('.container-popup');
 /* fond d'ecrant aleatoire */
 const FondEcrans = [
   "images/Nataalbi-Pigeon-perce.jpg",

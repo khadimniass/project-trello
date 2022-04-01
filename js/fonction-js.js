@@ -24,21 +24,18 @@ function addNewColumn() {
 
   icone.addEventListener("click", (e) => {
     if (main.childElementCount == 1) {
-      alert("impossible de supprimer la première colonne");
+      shownotification("impossible de supprimer la première colonne");
     } else {
       icone.parentNode.remove();
-      // if (!isColomnemodify) {
-        renomerItem();
-      // }
+      shownotification("colonne supprimée avec success...");
+      renomerItem();
     }
   });
   cpt++;
   // renomerItem();
 }
 function addTach() {
-  const bodyItem = document.querySelector('.i-body')
-
-
+  const bodyItem = document.querySelector(".i-body");
 
   const divFullNote = document.createElement("div");
   divFullNote.className = "full-note";
@@ -65,34 +62,34 @@ function addTach() {
   btnRight.innerHTML = ">";
   /* note */
   /* info */
-  const divInfo = document.createElement('div');
-  divInfo.className = "info"
+  const divInfo = document.createElement("div");
+  divInfo.className = "info";
   const p = document.createElement("p");
   p.innerHTML = textarea.value;
-  const containtTime = document.createElement('div');
+  const containtTime = document.createElement("div");
   containtTime.className = "containt-time";
-  const divDateexcec = document.createElement('div');
-  divDateexcec.className="date-execution";
-  const spandate = document.createElement('span');
-  spandate.innerHTML = startTime.value  /* cheikh moustapha */
-  const smalldate = document.createElement('small');
+  const divDateexcec = document.createElement("div");
+  divDateexcec.className = "date-execution";
+  const spandate = document.createElement("span");
+  spandate.innerHTML = startTime.value; /* cheikh moustapha */
+  const smalldate = document.createElement("small");
   smalldate.innerHTML = "date";
   divDateexcec.appendChild(spandate);
   divDateexcec.appendChild(smalldate);
-  const divHdebut = document.createElement('div');
+  const divHdebut = document.createElement("div");
   divHdebut.className = "hdbut";
-  const spanhdb = document.createElement('span');
+  const spanhdb = document.createElement("span");
   spanhdb.innerHTML = timed.value;
-  const smallHdb = document.createElement('small');
+  const smallHdb = document.createElement("small");
   smallHdb.innerHTML = "heure debut";
   divHdebut.appendChild(spanhdb);
   divHdebut.appendChild(smallHdb);
 
-  const divHfin = document.createElement('div');
+  const divHfin = document.createElement("div");
   divHfin.className = " hfin";
-  const spanhfin = document.createElement('span');
+  const spanhfin = document.createElement("span");
   spanhfin.innerHTML = endTime.value;
-  const smallhfin = document.createElement('small');
+  const smallhfin = document.createElement("small");
   smallhfin.innerHTML = "heure de fin";
   divHfin.appendChild(spanhfin);
   divHfin.appendChild(smallhfin);
@@ -103,47 +100,72 @@ function addTach() {
   divInfo.appendChild(p);
   divInfo.appendChild(containtTime);
 
+  divNote.appendChild(btnLeft);
+  divNote.appendChild(btnRight);
+  divFullNote.appendChild(iconeDeleteTach);
+  divFullNote.appendChild(divNoteImg);
+  divFullNote.appendChild(divNote);
+  divFullNote.appendChild(divInfo);
 
- 
-    divNote.appendChild(btnLeft);
-    divNote.appendChild(btnRight);
-    divFullNote.appendChild(iconeDeleteTach);
-    divFullNote.appendChild(divNoteImg);
-    divFullNote.appendChild(divNote);
-    divFullNote.appendChild(divInfo);
-    
-    bodyItem.appendChild(divFullNote);
-    // textarea.value = "";
-    // modal.className = "modal";
+  bodyItem.appendChild(divFullNote);
+  // textarea.value = "";
+  // modal.className = "modal";
 
-    btnRight.addEventListener('click',(e)=>{
-      const col = e.target.parentElement.parentElement.parentElement.parentElement;
-      const tach = e.target.parentElement.parentElement
-      const idColAct = parseInt(col.id);
-      const colSuiv = document.getElementById(idColAct+1);
-      colSuiv.lastChild.appendChild(tach);
-    })
-    btnLeft.addEventListener('click',e=>{
-      const col = e.target.parentElement.parentElement.parentElement.parentElement;
-      const tach = e.target.parentElement.parentElement
-      const idColAct = parseInt(col.id);
-      const colSuiv = document.getElementById(idColAct-1);
-      colSuiv.lastChild.appendChild(tach);
-    });
-    iconeDeleteTach.addEventListener('click',(e)=>{
-      const deltach = e.target.parentElement
-      // console.log(deltach);
-      elementSupprimer.appendChild(deltach)
-    })
-  
+  btnRight.addEventListener("click", (e) => {
+    const col =
+      e.target.parentElement.parentElement.parentElement.parentElement;
+    const tach = e.target.parentElement.parentElement;
+    const idColAct = parseInt(col.id);
+    const colSuiv = document.getElementById(idColAct + 1);
+    colSuiv.lastChild.appendChild(tach);
+  });
+  btnLeft.addEventListener("click", (e) => {
+    const col =
+      e.target.parentElement.parentElement.parentElement.parentElement;
+    const tach = e.target.parentElement.parentElement;
+    const idColAct = parseInt(col.id);
+    const colSuiv = document.getElementById(idColAct - 1);
+    colSuiv.lastChild.appendChild(tach);
+  });
+  iconeDeleteTach.addEventListener("click", (e) => {
+    const deltach = e.target.parentElement;
+    elementSupprimer.appendChild(deltach);
+    shownotification("tache deplacer dans la corbeille.");
+    /* afficher le nombre d'élément dans la corbeille */
+    const spancorb = document.createElement("span");
+    corbeille.innerHTML = "";
+    spancorb.innerHTML = elementSupprimer.childElementCount;
+    spancorb.style.color = "red";
+    corbeille.appendChild(spancorb);
+  });
 }
 function renomerItem() {
   document.querySelectorAll(".item").forEach((elts, j) => {
-    elts.querySelector("h3").innerText = `colone ${j+1}`;
-    elts.id = j+1;
+    elts.querySelector("h3").innerText = `colone ${j + 1}`;
+    elts.id = j + 1;
   });
 }
 
-function remonterElement(elts,nmb) {
-  return elts.parentElement*nmb;
+function remonterElement(elts, nmb) {
+  return elts.parentElement * nmb;
+}
+function shownotification(message) {
+  placemessage.innerHTML = message;
+  notification.classList.add("show-totificatinon");
+  setTimeout(() => {
+    notification.classList.remove("show-totificatinon");
+  }, 3000);
+}
+function cleanForm([inputs]) {
+  for (let i = 0; i < inputs.length; i++) {
+    inputs[i].innerHTML = "";
+  }
+}
+function showAlertConfirmation(message) {
+  placeMessageAlert.innerHTML = message;
+  containerPopup.classList.add("visible");
+  setTimeout(() => {
+    containerPopup.classList.remove("visible");
+    shownotification("delai depassé !!!");
+  }, 5000);
 }
