@@ -26,13 +26,21 @@ function addNewColumn() {
     if (main.childElementCount == 1) {
       shownotification("impossible de supprimer la première colonne");
     } else {
-      icone.parentNode.remove();
-      shownotification("colonne supprimée avec success...");
-      renomerItem();
+      showAlertConfirmation(
+        "est tu vraiment sur de vouloir supprimer la colonne ?"
+      );
+      bntOui.addEventListener("click", (e) => {
+        containerPopup.classList.remove("visible");
+        icone.parentNode.remove();
+        shownotification("colonne supprimée avec success...");
+        renomerItem();
+      });
+      bntNon.addEventListener("click", (e) => {
+        containerPopup.classList.remove("visible");
+      });
     }
   });
   cpt++;
-  // renomerItem();
 }
 function addTach() {
   const bodyItem = document.querySelector(".i-body");
@@ -56,10 +64,10 @@ function addTach() {
   // divNote.draggable = "true"
   const btnLeft = document.createElement("button");
   btnLeft.className = "move-left";
-  btnLeft.innerHTML = "<";
+  btnLeft.innerHTML = "&laquo;"; /* < */
   const btnRight = document.createElement("button");
   btnRight.className = "move-right";
-  btnRight.innerHTML = ">";
+  btnRight.innerHTML = "&raquo;"; /* > */
   /* note */
   /* info */
   const divInfo = document.createElement("div");
@@ -128,15 +136,26 @@ function addTach() {
     colSuiv.lastChild.appendChild(tach);
   });
   iconeDeleteTach.addEventListener("click", (e) => {
+    showAlertConfirmation(
+      "est tu vraiment sur de vouloir supprimer cette tache ?"
+    );
     const deltach = e.target.parentElement;
-    elementSupprimer.appendChild(deltach);
-    shownotification("tache deplacer dans la corbeille.");
-    /* afficher le nombre d'élément dans la corbeille */
-    const spancorb = document.createElement("span");
-    corbeille.innerHTML = "";
-    spancorb.innerHTML = elementSupprimer.childElementCount;
-    spancorb.style.color = "red";
-    corbeille.appendChild(spancorb);
+    bntOui.addEventListener("click", () => {
+      elementSupprimer.appendChild(deltach);
+      shownotification("tache deplacer dans la corbeille.");
+      containerPopup.classList.remove("visible");
+
+      /* afficher le nombre d'élément dans la corbeille */
+
+      const spancorb = document.createElement("span");
+      corbeille.innerHTML = "";
+      spancorb.innerHTML = elementSupprimer.childElementCount;
+      spancorb.style.color = "red";
+      corbeille.appendChild(spancorb);
+    });
+    bntNon.addEventListener("click", (e) => {
+      containerPopup.classList.remove("visible");
+    });
   });
 }
 function renomerItem() {
@@ -161,11 +180,15 @@ function cleanForm([inputs]) {
     inputs[i].innerHTML = "";
   }
 }
+
 function showAlertConfirmation(message) {
   placeMessageAlert.innerHTML = message;
   containerPopup.classList.add("visible");
   setTimeout(() => {
-    containerPopup.classList.remove("visible");
-    shownotification("delai depassé !!!");
-  }, 5000);
+    // containerPopup.classList.remove("visible");
+    // shownotification("delai depassé !!!");
+  }, 10000);
+}
+function valideDate() {
+  const DateActuelle = new moment();
 }

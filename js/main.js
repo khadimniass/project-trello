@@ -18,7 +18,7 @@ main.style.backgroundImage = `url(${
 
 addNote.addEventListener("click", () => {
   if (main.childElementCount == 0) {
-    alert("veillez creer d'abord une colonne");
+    shownotification("veillez creer d'abord une colonne");
   } else modal.className = "modal show-modal";
 });
 
@@ -113,3 +113,5 @@ upDown.addEventListener('click', () =>{
   upDown.classList.toggle('tourner');
   listerEtat.classList.toggle('show-etat')
 })
+
+

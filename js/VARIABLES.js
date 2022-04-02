@@ -34,6 +34,7 @@ let placemessage = document.getElementById('message');
 const placeMessageAlert = document.getElementById('message-alerte');
 
 const containerPopup = document.querySelector('.container-popup');
+
 /* fond d'ecrant aleatoire */
 const FondEcrans = [
   "images/Nataalbi-Pigeon-perce.jpg",

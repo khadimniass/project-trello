@@ -12,7 +12,7 @@
   justify-content: center;
   align-items: center;
   transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35);
-  transform: translateY(-250%);
+  transform: translateY(-300%);
 }
 
 .notification.show-totificatinon {
@@ -83,10 +83,14 @@
   box-shadow: 1px -1px 30px 49px rgba(0, 0, 0, 0.15);
   -webkit-box-shadow: 1px -1px 30px 49px rgba(0, 0, 0, 0.15);
   -moz-box-shadow: 1px -1px 30px 49px rgba(0, 0, 0, 0.15);
+
+  animation: bouger 1s;
 }
 
 .visible {
   visibility: visible;
+  /* animation: bouger 
+  .3s; */
 }
 
 /* end alerte */
