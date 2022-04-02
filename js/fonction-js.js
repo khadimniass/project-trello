@@ -189,6 +189,7 @@ function showAlertConfirmation(message) {
     // shownotification("delai depassé !!!");
   }, 10000);
 }
-function valideDate() {
+function valideDate()) {
+  
   const DateActuelle = new moment();
 }
