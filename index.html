@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/keyframes.css">
-    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/style.alert.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="images/neige.jpg" type="image">
     <title>TRELLO</title>
 </head>
@@ -25,58 +25,17 @@
                 <button id="add-note">ajouter noter</button>
             </div>
 
-            <i class="fa-solid fa-angle-up icon-head-cen"></i>
-            <i class="fa-solid fa-file icon-head-cen"></i>
+            <i title="liste des différents etats" class="fa-solid fa-angle-up icon-head-cen"></i>
+            <i title="sauvegarder etat" class="fa-solid fa-file icon-head-cen"></i>
 
-            <i class="fa-solid fa-trash icon-head-cen"></i>
+            <i title="corbeille des taches supprimées" class="fa-solid fa-trash icon-head-cen"></i>
 
         </header>
         <div class="liste-etats">
             <h1>liste des etats</h1>
         </div>
         <main>
-            <!-- <div class="item">
-                <i class="fa-solid fa-trash-can animate__bounce"></i>
-                <div class="i-heaed">
-                    <h3>colone 1</h3>
-                </div>
-                <div class="i-body"> -->
-
-
-
-            <!-- <div class="full-note" draggable="true">
-                        <i class="fa-solid fa-circle-minus"></i>
-                        <div class="i-img">
-                            <img src="https://source.unsplash.com/random/150x80">
-                        </div>
-                        <div class="note">
-                            <button class="move-left">
-                                < </button>
-                                    <button class="move-right"> > </button>
-                        </div>
-                        <div class="info">
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing</p>
-                            <div class="containt-time">
-                                <div class="date-execution">
-                                    <span>15/06/1998</span>
-                                    <small>date</small>
-                                </div>
-                                <div class="hdbut">
-                                    <span>15h:58</span>
-                                    <small>heure de debut</small>
-                                </div>
-                                <div class="hfin">
-                                    <span>18:02</span>
-                                    <small>heure de fin</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
-
-
-
-            <!-- </div>
-            </div> -->
+            <!--  -->
         </main>
         <!-- begin popup de confirmation -->
         <div class="container-popup">
@@ -93,8 +52,8 @@
                     <div class="head-popup">Confirm</div>
                     <p id="message-alerte">tu es vraiment sur de vouloir effacer</p>
                     <div class="btns">
-                        <label id="oui">Yes, Delete!</label>
-                        <label id="non">Cancel</label>
+                        <label id="oui">OUI</label>
+                        <label id="non">NON</label>
                     </div>
                 </div>
             </div>
@@ -107,7 +66,7 @@
             <span id="message"></span>
         </div>
         <!--end notification -->
-        <aside class="item containt-corbeille">
+        <aside class="containt-corbeille">
             <div class="i-heaed">
                 <i>restoration</i>
             </div>
@@ -122,26 +81,31 @@
                     <div class="close">x</div>
                 </div>
                 <div class="mod-main">
-                    <span>les informationd elanouvelle tache</span>
+                    <span>les informations de lanouvelle tâche</span>
                     <!-- <form action="" method="post"> -->
                     <div class="form-it">
                         <label for="tache">tache</label>
-                        <textarea name="" id="tache" cols="30" rows="10"></textarea>
+                        <textarea name="" id="tache" cols="30" rows="10" autofocus ></textarea>
+                        <small></small>
                     </div>
                     <div class="form-it">
                         <label for="date">date</label>
                         <input type="date" name="" id="date">
+                        <small></small>
                     </div>
                     <div class="form-it">
-                        <label for="timed">date de depart</label>
+                        <label for="timed">heure de depart</label>
                         <input type="time" name="timed" id="timed">
+                        <small></small>
                     </div>
                     <div class="form-it">
-                        <label for="timef">date de fin</label>
+                        <label for="timef">heure de fin</label>
                         <input type="time" name="timef" id="timef">
+                        <small></small>
                     </div>
-                    <div class="form-it">
+                    <div class="form-it-btn">
                         <button id="add-us">Ajouter</button>
+
                     </div>
                     <!-- </form> -->
                 </div>
@@ -154,6 +118,8 @@
     <script src="js/VARIABLES.js"></script>
     <script src="js/fonction-js.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/back.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.25.1/moment.min.js"></script> -->
 </body>
 
 </html>

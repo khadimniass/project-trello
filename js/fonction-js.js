@@ -47,10 +47,13 @@ function addTach() {
 
   const divFullNote = document.createElement("div");
   divFullNote.className = "full-note";
-  divFullNote.draggable = "true";
+  // divFullNote.draggable = "true";
   const iconeDeleteTach = document.createElement("i");
   iconeDeleteTach.className = "fa-solid fa-circle-minus";
   // iconeDeleteTach.innerHTML = "d"
+  const btnRestore = document.createElement('button');
+  btnRestore.className ="restorateure";
+  btnRestore.innerHTML ="restorer"
   const divNoteImg = document.createElement("div");
   divNoteImg.className = "i-img";
   /* img note */
@@ -71,7 +74,7 @@ function addTach() {
   /* note */
   /* info */
   const divInfo = document.createElement("div");
-  divInfo.className = "info";
+  divInfo.className = "info in-colonne";
   const p = document.createElement("p");
   p.innerHTML = textarea.value;
   const containtTime = document.createElement("div");
@@ -79,7 +82,8 @@ function addTach() {
   const divDateexcec = document.createElement("div");
   divDateexcec.className = "date-execution";
   const spandate = document.createElement("span");
-  spandate.innerHTML = startTime.value; /* cheikh moustapha */
+  spandate.innerHTML = startTime.value;
+  spandate.className = "spandate"; 
   const smalldate = document.createElement("small");
   smalldate.innerHTML = "date";
   divDateexcec.appendChild(spandate);
@@ -87,8 +91,10 @@ function addTach() {
   const divHdebut = document.createElement("div");
   divHdebut.className = "hdbut";
   const spanhdb = document.createElement("span");
+  spanhdb.className ="spanhdb";
   spanhdb.innerHTML = timed.value;
   const smallHdb = document.createElement("small");
+  smallHdb.className="smallHdb";
   smallHdb.innerHTML = "heure debut";
   divHdebut.appendChild(spanhdb);
   divHdebut.appendChild(smallHdb);
@@ -97,6 +103,7 @@ function addTach() {
   divHfin.className = " hfin";
   const spanhfin = document.createElement("span");
   spanhfin.innerHTML = endTime.value;
+  spanhfin.className ="spanhfin";
   const smallhfin = document.createElement("small");
   smallhfin.innerHTML = "heure de fin";
   divHfin.appendChild(spanhfin);
@@ -111,6 +118,7 @@ function addTach() {
   divNote.appendChild(btnLeft);
   divNote.appendChild(btnRight);
   divFullNote.appendChild(iconeDeleteTach);
+  divFullNote.appendChild(btnRestore);
   divFullNote.appendChild(divNoteImg);
   divFullNote.appendChild(divNote);
   divFullNote.appendChild(divInfo);
@@ -144,19 +152,34 @@ function addTach() {
       elementSupprimer.appendChild(deltach);
       shownotification("tache deplacer dans la corbeille.");
       containerPopup.classList.remove("visible");
+      divInfo.classList.remove("in-colonne");
+      divInfo.classList.add("in-corbeille");
+      // divFullNote.id = parseInt(divFullNote.parentElement.parentElement.id) +10;
+      
+      /* effacer les icone dans la cobeille */
+
+      /* effacer les icone dans la cobeille */
 
       /* afficher le nombre d'élément dans la corbeille */
-
       const spancorb = document.createElement("span");
       corbeille.innerHTML = "";
       spancorb.innerHTML = elementSupprimer.childElementCount;
       spancorb.style.color = "red";
       corbeille.appendChild(spancorb);
+      /* afficher le nombre d'élément dans la corbeille */
     });
     bntNon.addEventListener("click", (e) => {
       containerPopup.classList.remove("visible");
     });
   });
+
+  /* processus de restoration */
+  btnRestore.addEventListener('click',()=>{
+    document.querySelectorAll('.item').forEach(colonne=>{
+        colonne.appendChild(btnRestore.parentElement);
+        shownotification('restoration reussi avec succes');
+    })
+  })
 }
 function renomerItem() {
   document.querySelectorAll(".item").forEach((elts, j) => {
@@ -170,15 +193,10 @@ function remonterElement(elts, nmb) {
 }
 function shownotification(message) {
   placemessage.innerHTML = message;
-  notification.classList.add("show-totificatinon");
+  notification.classList.add("show-notificatinon");
   setTimeout(() => {
-    notification.classList.remove("show-totificatinon");
-  }, 3000);
-}
-function cleanForm([inputs]) {
-  for (let i = 0; i < inputs.length; i++) {
-    inputs[i].innerHTML = "";
-  }
+    notification.classList.remove("show-notificatinon");
+  }, 2000);
 }
 
 function showAlertConfirmation(message) {
@@ -189,7 +207,52 @@ function showAlertConfirmation(message) {
     // shownotification("delai depassé !!!");
   }, 10000);
 }
-function valideDate()) {
-  
-  const DateActuelle = new moment();
+
+function estDateValide() {
+  const DateActuelle = new Date();
+  const anneAct = DateActuelle.getFullYear();
+  const moisAct = DateActuelle.getMonth();
+  const jourAct = DateActuelle.getDate();
+  const dateActuellEnMillisecondes = Date.parse(
+    new Date(anneAct, moisAct, jourAct)
+  );
+  const dateEntree = Date.parse(startTime.value);
+  return dateEntree >= dateActuellEnMillisecondes;
+}
+/* cette fonction prend en parametre la date et le convertir en millisecondes */
+function heureEnMillisecondes(temps) {
+  const anneeEntree = startTime.value;
+  return Date.parse(anneeEntree + " " + temps.value);
+}
+
+function getHeureActuelle() {
+  const DateActuelle = new Date();
+  const heureActuelle = DateActuelle.getHours();
+  const minuteActuelle = DateActuelle.getMinutes();
+  return Date.parse(
+    new Date(
+      DateActuelle.getFullYear(),
+      DateActuelle.getMonth(),
+      DateActuelle.getDate(),
+      heureActuelle,
+      minuteActuelle
+    )
+  );
+}
+
+function cleanForm() {
+  document.querySelectorAll(".form-it").forEach((parent) => {
+    parent.classList.remove("show-error");
+    parent.children[1].value = "";
+  });
+}
+function isfieldEmpty() {
+  document.querySelectorAll(".form-it").forEach((parent) => {
+    if (parent.children[1].value == "") {
+      parent.children[2].innerHTML = "ce champ est requis";
+      parent.classList.add("show-error");
+    } else {
+      parent.classList.remove("show-error");
+    }
+  });
 }

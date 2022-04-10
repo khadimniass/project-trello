@@ -6,14 +6,12 @@ trello : Documents/trello/100-Projects-HTML-CSS-JavaScript/10 - Create Todo App 
 100-13
 anime text : > 100 - 27
 /home/bamba/Documents/trello/kards
-/home/bamba/Documents/trello/task-manager : full Trello/
-/home/bamba/Documents/trello/Trello/
 */
 
 // console.log(FondEcrans);
 main.style.backgroundImage = `url(${
-  // FondEcrans[Math.floor(Math.random() * FondEcrans.length)]
-  FondEcrans[21]
+  FondEcrans[Math.floor(Math.random() * FondEcrans.length)]
+  // FondEcrans[21];
 })`;
 
 addNote.addEventListener("click", () => {
@@ -24,6 +22,7 @@ addNote.addEventListener("click", () => {
 
 close.addEventListener("click", () => {
   modal.className = "modal";
+  cleanForm();
 });
 
 let cpt = 1;
@@ -31,6 +30,9 @@ addColumn.addEventListener("click", () => {
   if (main.childElementCount < 5) {
     addNewColumn();
     renomerItem();
+    shownotification('une colonne a ete ajouté')
+  }else{
+    shownotification('nobre de collonnes atteints')
   }
 });
 //drop and drag
@@ -79,7 +81,52 @@ window.addEventListener("click", (e) => {
 
 //creation des US TACHE
 addUs.addEventListener("click", () => {
-  addTach();
+  let compteur = 0;
+  isfieldEmpty();
+  if (!estDateValide()) {
+    //erreur pour la date la date doit etre supérieur ou égal a la date d'aujourd'hui.
+    startTime.parentElement.classList.add("show-error");
+    startTime.nextElementSibling.innerHTML = "date invalide";
+    compteur++;
+  }
+  if (heureEnMillisecondes(timed) < getHeureActuelle()) {
+    timed.parentElement.classList.add("show-error");
+    timed.nextElementSibling.innerHTML = "heure de debut invalide ";
+    compteur++;
+  }
+  if (heureEnMillisecondes(timed) > heureEnMillisecondes(endTime)) {
+    endTime.parentElement.classList.add("show-error");
+    endTime.nextElementSibling.innerHTML = "heure de fin invalide";
+    compteur++;
+  }
+  if (compteur == 0) {
+    addTach();
+
+    document.querySelectorAll(".full-note").forEach((tacheEnCours) => {
+      const heuredebut = heureEnMillisecondes(timed);
+      const heuredefin = heureEnMillisecondes(endTime);
+
+      const begintimer = setInterval(() => {
+        if (heuredebut < getHeureActuelle()) {
+          // alert('heure de debut');
+          //couleur grise && ecri encours
+          // tacheEnCours.style.border = "10px solid gray";
+          tacheEnCours.classList.add('tache-encours');
+          clearInterval(begintimer);
+        }
+      }, 1000);
+      const endtimer = setInterval(() => {
+        if (heuredefin < getHeureActuelle()) {
+          // tacheEnCours.style.border = "10px solid red";
+          tacheEnCours.classList.remove('tache-encours');
+          tacheEnCours.classList.add('tache-terminer');
+          clearInterval(endtimer);
+        }
+      },1000);
+    });
+    modal.classList.remove("show-modal");
+    cleanForm();
+  }
 });
 
 corbeille.addEventListener("click", () => {
@@ -106,12 +153,9 @@ window.addEventListener("click", (e) => {
     });
     isColomnemodify = true;
   });
-
 });
 
-upDown.addEventListener('click', () =>{
-  upDown.classList.toggle('tourner');
-  listerEtat.classList.toggle('show-etat')
-})
-
-
+upDown.addEventListener("click", () => {
+  upDown.classList.toggle("tourner");
+  listerEtat.classList.toggle("show-etat");
+});
