@@ -39,6 +39,7 @@ const containerPopup = document.querySelector('.container-popup');
 const FondEcrans = [
   "images/Nataalbi-Pigeon-perce.jpg",
   "images/architecture-g7.jpg",
+  "images/texture-gb6.jpg",
   "images/Nataalbi-Pigeon-trotteur.jpg",
   "images/img.jpg",
   "images/neige.jpg",
@@ -55,7 +56,6 @@ const FondEcrans = [
   "images/horse-g8.jpg",
   "images/background-glace.jpg",
   "images/horseshoe-bend.jpg",
-  "images/texture-gb6.jpg",
   "images/sunflowe.jpg",
   "images/rue-negee.jpg",
   "images/painting.jpg",

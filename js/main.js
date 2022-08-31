@@ -1,17 +1,7 @@
-/* 
-50-12
-50-9
-50-2
-trello : Documents/trello/100-Projects-HTML-CSS-JavaScript/10 - Create Todo App (Drag & Drop)
-100-13
-anime text : > 100 - 27
-/home/bamba/Documents/trello/kards
-*/
-
 // console.log(FondEcrans);
 main.style.backgroundImage = `url(${
-  FondEcrans[Math.floor(Math.random() * FondEcrans.length)]
-  // FondEcrans[21];
+  // FondEcrans[Math.floor(Math.random() * FondEcrans.length)]
+  FondEcrans[2]
 })`;
 
 addNote.addEventListener("click", () => {
@@ -30,9 +20,9 @@ addColumn.addEventListener("click", () => {
   if (main.childElementCount < 5) {
     addNewColumn();
     renomerItem();
-    shownotification('une colonne a ete ajouté')
-  }else{
-    shownotification('nobre de collonnes atteints')
+    shownotification("une colonne a ete ajouté");
+  } else {
+    shownotification("nobre de collonnes atteints");
   }
 });
 //drop and drag
@@ -109,20 +99,19 @@ addUs.addEventListener("click", () => {
       const begintimer = setInterval(() => {
         if (heuredebut < getHeureActuelle()) {
           // alert('heure de debut');
-          //couleur grise && ecri encours
           // tacheEnCours.style.border = "10px solid gray";
-          tacheEnCours.classList.add('tache-encours');
+          tacheEnCours.classList.add("tache-encours");
           clearInterval(begintimer);
         }
       }, 1000);
       const endtimer = setInterval(() => {
         if (heuredefin < getHeureActuelle()) {
           // tacheEnCours.style.border = "10px solid red";
-          tacheEnCours.classList.remove('tache-encours');
-          tacheEnCours.classList.add('tache-terminer');
+          tacheEnCours.classList.remove("tache-encours");
+          tacheEnCours.classList.add("tache-terminer");
           clearInterval(endtimer);
         }
-      },1000);
+      }, 1000);
     });
     modal.classList.remove("show-modal");
     cleanForm();
@@ -146,7 +135,7 @@ window.addEventListener("click", (e) => {
     input.addEventListener("blur", function () {
       title.innerHTML = input.value;
       if (title.innerHTML == "") {
-        alert("donnez une valeur");
+        shownotification("veillez donner une valeur");
       } else {
         input.replaceWith(title);
       }

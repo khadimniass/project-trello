@@ -26,9 +26,7 @@ function addNewColumn() {
     if (main.childElementCount == 1) {
       shownotification("impossible de supprimer la première colonne");
     } else {
-      showAlertConfirmation(
-        "est tu vraiment sur de vouloir supprimer la colonne ?"
-      );
+      showAlertConfirmation("est tu vraiment sur de vouloir supprimer la colonne ?");
       bntOui.addEventListener("click", (e) => {
         containerPopup.classList.remove("visible");
         icone.parentNode.remove();
